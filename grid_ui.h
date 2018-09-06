@@ -9,9 +9,14 @@ class grid_ui : public QWidget
 public:
     explicit grid_ui(QWidget *parent = nullptr);
 
+protected:
+void paintEvent(QPaintEvent *event);
+
 signals:
 
 public slots:
 };
+
+
 
 #endif // GRID_UI_H
