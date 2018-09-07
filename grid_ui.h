@@ -1,4 +1,4 @@
-#ifndef GRID_UI_H
+﻿#ifndef GRID_UI_H
 #define GRID_UI_H
 
 #include <QWidget>
@@ -15,6 +15,10 @@ void paintEvent(QPaintEvent *event);
 signals:
 
 public slots:
+
+
+public:
+	std::vector<std::vector<QString>> m_cells;
 };
 
 
