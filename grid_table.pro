@@ -32,8 +32,7 @@ SOURCES += \
 HEADERS += \
         grid_table.h \
     grid_ui.h \
-    x_grid_impl.h \
-    impl_grid_cell_values.hpp
+    x_grid_impl.h
 
 FORMS += \
         grid_table.ui
