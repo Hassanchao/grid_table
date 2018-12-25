@@ -44,15 +44,33 @@ void x_paint_manager::draw_whole_grid()
 {
     if(!m_grid_impl || !m_grid_control) return;
 
+
+
+
     QPainter painter(m_grid_control);
     painter.setRenderHint(QPainter::Antialiasing, true);
 
-    QRect rc = m_grid_control->rect();
+    m_client_rect = m_grid_control->rect();
 
     QPainterPath path;
 
-    QPoint start_point(rc.topLeft());
-    QPoint end_point(rc.bottomRight());
+    draw_line_h_v(path);
+
+    painter.setPen(Qt::black);
+    painter.setBrush(QColor(50,50,50));
+    painter.drawPath(path);
+
+
+
+
+    return;
+
+
+
+
+
+    QPoint start_point(m_client_rect.topLeft());
+    QPoint end_point(m_client_rect.bottomRight());
 
     QFont ft;
 
@@ -64,6 +82,49 @@ void x_paint_manager::draw_whole_grid()
     painter.setBrush(QColor(50,50,50));
     painter.drawPath(path);
 
+
+}
+
+void x_paint_manager::draw_line_h_v(QPainterPath& path)
+{
+    if(m_ui_data.m_cells_values.empty())return;
+    size_t row_num = m_ui_data.m_cells_values.size();
+    size_t col_num = m_ui_data.m_cells_values.front().size();
+
+    const int cell_width = 80;
+    const int cell_height = 25;
+    int right_x = int(col_num *cell_height);
+    int bottom_y = int(row_num * cell_width) ;
+
+   // 划横线
+    for (size_t row = 0; row <row_num;++row)
+    {
+        int tmp_height = row * cell_height;
+
+        QPoint start_point(0, tmp_height);
+        QPoint end_point(right_x, tmp_height);
+
+        path.moveTo(start_point);
+        path.lineTo(end_point);
+    }
+
+    // 划竖线
+    for(size_t col = 0; col <col_num; ++col)
+    {
+        int tmp_width = col * cell_width;
+
+        QPoint start_point(tmp_width, 0);
+        QPoint end_point(tmp_width, bottom_y);
+
+        path.moveTo(start_point);
+        path.lineTo(end_point);
+    }
+
+    path.closeSubpath();
+}
+
+void x_paint_manager::draw_text(QPainter &painter)
+{
 
 }
 

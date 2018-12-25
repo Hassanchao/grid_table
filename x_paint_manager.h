@@ -3,6 +3,8 @@
 
 #include <vector>
 #include <string>
+#include <QRect>
+#include <QPainter>
 
 class x_grid_impl;
 class x_grid_control;
@@ -21,6 +23,7 @@ public:
 public:
     std::vector<std::vector<std::string>> m_cells_values;
 
+
 };
 
 
@@ -33,12 +36,19 @@ public:
 public:
     void draw_whole_grid();
 
+
+
 public:
     x_grid_impl* m_grid_impl = nullptr;
     x_grid_control* m_grid_control = nullptr;
 
 public:
+    void draw_line_h_v(QPainterPath& path);
+    void draw_text(QPainter& painter);
+
+public:
     x_grid_ui_data m_ui_data;
+     QRect m_client_rect;
 };
 
 #endif // X_PAINT_MANAGER_H
