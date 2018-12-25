@@ -1,14 +1,14 @@
 ﻿#include <QPainter>
 #include <QTime>
 
-#include "grid_ui.h"
+#include "x_grid_control.h"
 
-grid_ui::grid_ui(QWidget *parent) : QWidget(parent)
+x_grid_control::x_grid_control(QWidget *parent) : QWidget(parent)
 {
 
 }
 
-void grid_ui::paintEvent(QPaintEvent *event)
+void x_grid_control::paintEvent(QPaintEvent *event)
 {
 	if (!event) return;
 

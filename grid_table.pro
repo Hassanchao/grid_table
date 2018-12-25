@@ -31,8 +31,8 @@ SOURCES += \
 
 HEADERS += \
         grid_table.h \
-    grid_ui.h \
-    x_grid_impl.h
+    x_grid_impl.h \
+    x_grid_control.h
 
 FORMS += \
         grid_table.ui

@@ -1,12 +1,12 @@
 #include <QApplication>
 
-#include "grid_ui.h"
+#include "x_grid_control.h"
 
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    grid_ui w;
+    x_grid_control w;
     w.show();
 
     return a.exec();

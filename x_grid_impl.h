@@ -9,7 +9,6 @@ public:
     ~x_grid_impl();
 
 public:
-
 };
 
 #endif // X_GRID_IMPL_H

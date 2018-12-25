@@ -3,11 +3,11 @@
 
 #include <QWidget>
 
-class grid_ui : public QWidget
+class x_grid_control : public QWidget
 {
     Q_OBJECT
 public:
-    explicit grid_ui(QWidget *parent = nullptr);
+    explicit x_grid_control(QWidget *parent = nullptr);
 
 protected:
 void paintEvent(QPaintEvent *event);
