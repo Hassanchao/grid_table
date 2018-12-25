@@ -1,36 +1,46 @@
 ﻿#include <QPainter>
 #include <QTime>
 
+#include "x_grid_impl.h"
+
 #include "x_grid_control.h"
+
 
 x_grid_control::x_grid_control(QWidget *parent) : QWidget(parent)
 {
+    x_grid_impl* impl = new x_grid_impl;
+    impl->m_grid = this;
+    impl->m_paint_mana.m_grid_control = this;
 
+    m_grid_impl = impl;
 }
 
 void x_grid_control::paintEvent(QPaintEvent *event)
 {
 	if (!event) return;
 
-    QPainter painter(this);
-    painter.setRenderHint(QPainter::Antialiasing, true);
+    x_grid_impl* impl = (x_grid_impl*)m_grid_impl;
+    impl->m_paint_mana.draw_whole_grid();
 
-    QRect rc = this->rect();
+//    QPainter painter(this);
+//    painter.setRenderHint(QPainter::Antialiasing, true);
 
-    QPainterPath path;
+//    QRect rc = this->rect();
 
-    QPoint start_point(rc.topLeft());
-	QPoint end_point(rc.bottomRight());
+//    QPainterPath path;
 
-	QFont ft;
+//    QPoint start_point(rc.topLeft());
+//	QPoint end_point(rc.bottomRight());
 
-	path.moveTo(start_point);
-	path.lineTo(end_point);
-	path.addText(10,10, ft, "123456");
-	path.closeSubpath();
-	painter.setPen(Qt::black);
-	painter.setBrush(QColor(50,50,50));
-	painter.drawPath(path);
+//	QFont ft;
+
+//	path.moveTo(start_point);
+//	path.lineTo(end_point);
+//	path.addText(10,10, ft, "123456");
+//	path.closeSubpath();
+//	painter.setPen(Qt::black);
+//	painter.setBrush(QColor(50,50,50));
+//	painter.drawPath(path);
 
 	
 
