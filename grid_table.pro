@@ -25,12 +25,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        grid_table.cpp \
-    grid_ui.cpp \
-    x_grid_impl.cpp
+    x_grid_impl.cpp \
+    x_grid_control.cpp
 
 HEADERS += \
-        grid_table.h \
     x_grid_impl.h \
     x_grid_control.h
 

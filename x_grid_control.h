@@ -19,6 +19,9 @@ public slots:
 
 public:
 	std::vector<std::vector<QString>> m_cells;
+
+private:
+    void* m_grid_impl = nullptr;
 };
 
 
