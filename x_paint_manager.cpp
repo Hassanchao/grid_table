@@ -18,8 +18,8 @@ void x_grid_ui_data::set_default_value()
 {
     m_cells_values.clear();
 
-    const size_t row_num = 100;
-    const size_t col_num = 100;
+    const size_t row_num = 20;
+    const size_t col_num = 20;
 
     m_cells_values.resize(row_num);
     for (size_t row = 0;row < row_num; ++row)
@@ -44,33 +44,24 @@ void x_paint_manager::draw_whole_grid()
 {
     if(!m_grid_impl || !m_grid_control) return;
 
-
-
-
     QPainter painter(m_grid_control);
     painter.setRenderHint(QPainter::Antialiasing, true);
 
-    m_client_rect = m_grid_control->rect();
+    m_ui_data.m_client_rect = m_grid_control->rect();
 
     QPainterPath path;
 
     draw_line_h_v(path);
+	draw_text(painter);
 
     painter.setPen(Qt::black);
     painter.setBrush(QColor(50,50,50));
     painter.drawPath(path);
 
-
-
-
     return;
 
-
-
-
-
-    QPoint start_point(m_client_rect.topLeft());
-    QPoint end_point(m_client_rect.bottomRight());
+    QPoint start_point(m_ui_data.m_client_rect.topLeft());
+    QPoint end_point(m_ui_data.m_client_rect.bottomRight());
 
     QFont ft;
 

@@ -23,7 +23,7 @@ public:
 public:
     std::vector<std::vector<std::string>> m_cells_values;
 
-
+	QRect m_client_rect;
 };
 
 
@@ -48,7 +48,7 @@ public:
 
 public:
     x_grid_ui_data m_ui_data;
-     QRect m_client_rect;
+    
 };
 
 #endif // X_PAINT_MANAGER_H
