@@ -27,13 +27,15 @@ SOURCES += \
         main.cpp \
     x_grid_impl.cpp \
     x_grid_control.cpp \
-    x_paint_manager.cpp
+    x_paint_manager.cpp \
+    x_grid_gl_control.cpp
 
 HEADERS += \
     x_grid_impl.h \
     x_grid_control.h \
     x_paint_manager.h \
-    impl_grid_cell_values.hpp
+    impl_grid_cell_values.hpp \
+    x_grid_gl_control.h
 
 FORMS += \
         grid_table.ui
