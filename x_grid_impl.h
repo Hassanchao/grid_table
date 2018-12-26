@@ -1,6 +1,8 @@
 ﻿#ifndef X_GRID_IMPL_H
 #define X_GRID_IMPL_H
 
+#include <array>
+
 #include "impl_grid_cell_values.hpp"
 #include "x_grid_control.h"
 #include "x_paint_manager.h"

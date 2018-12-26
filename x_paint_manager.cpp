@@ -29,7 +29,7 @@ void x_grid_ui_data::set_default_value()
         for (size_t col = 0; col < col_num; ++col)
         {
             string& cell = row_vlues[col];
-            cell = std::to_string(row) + "行" + std::to_string(col) + "列";
+            cell = std::to_string(row) + "row" + std::to_string(col) + "line";
         }
     }
 }
