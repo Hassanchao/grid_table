@@ -28,6 +28,9 @@ public:
     x_grid_control* m_grid = nullptr;
     x_paint_manager m_paint_mana;
 
+
+
+
 public:
     impl_grid_cell_values<std::string> m_cell_text;
 

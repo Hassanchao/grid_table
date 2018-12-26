@@ -21,7 +21,10 @@ public:
     void set_default_value();
 
 public:
-    std::vector<std::vector<std::string>> m_cells_values;
+	const int m_cell_width = 80;
+	const int m_cell_height = 25;
+
+    std::vector<std::vector<QString>> m_cells_values;
 
 	QRect m_client_rect;
 };

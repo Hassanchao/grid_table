@@ -18,18 +18,18 @@ void x_grid_ui_data::set_default_value()
 {
     m_cells_values.clear();
 
-    const size_t row_num = 20;
-    const size_t col_num = 20;
+    const size_t row_num = 40;
+    const size_t col_num = 25;
 
     m_cells_values.resize(row_num);
     for (size_t row = 0;row < row_num; ++row)
     {
-        std::vector<string>& row_vlues = m_cells_values[row];
+        std::vector<QString>& row_vlues = m_cells_values[row];
         row_vlues.resize(col_num);
         for (size_t col = 0; col < col_num; ++col)
         {
-            string& cell = row_vlues[col];
-            cell = std::to_string(row) + "row" + std::to_string(col) + "line";
+            QString& cell = row_vlues[col];
+            cell = QString::number(row) + "row" + QString::number(col) + "line";
         }
     }
 }
@@ -82,10 +82,10 @@ void x_paint_manager::draw_line_h_v(QPainterPath& path)
     size_t row_num = m_ui_data.m_cells_values.size();
     size_t col_num = m_ui_data.m_cells_values.front().size();
 
-    const int cell_width = 80;
-    const int cell_height = 25;
-    int right_x = int(col_num *cell_height);
-    int bottom_y = int(row_num * cell_width) ;
+    const int cell_width = m_ui_data.m_cell_width;
+    const int cell_height = m_ui_data.m_cell_height;
+    int right_x = int(col_num *cell_width);
+    int bottom_y = int(row_num * cell_height);
 
    // 划横线
     for (size_t row = 0; row <row_num;++row)
@@ -99,6 +99,11 @@ void x_paint_manager::draw_line_h_v(QPainterPath& path)
         path.lineTo(end_point);
     }
 
+	const int height_rc = row_num * cell_height;
+
+	path.moveTo(0, height_rc);
+	path.lineTo(right_x, height_rc);
+
     // 划竖线
     for(size_t col = 0; col <col_num; ++col)
     {
@@ -111,12 +116,35 @@ void x_paint_manager::draw_line_h_v(QPainterPath& path)
         path.lineTo(end_point);
     }
 
+	const int width_rc = col_num * cell_width;
+	path.moveTo(width_rc, 0);
+	path.lineTo(width_rc, bottom_y);
+
+
     path.closeSubpath();
 }
 
-void x_paint_manager::draw_text(QPainter &painter)
+void x_paint_manager::draw_text(QPainter& painter)
 {
+	if (m_ui_data.m_cells_values.empty())return;
+	size_t row_num = m_ui_data.m_cells_values.size();
+	size_t col_num = m_ui_data.m_cells_values.front().size();
 
+	const int cell_width = m_ui_data.m_cell_width;
+	const int cell_height = m_ui_data.m_cell_height;
+
+	for (size_t row = 0; row < row_num; ++row)
+	{
+		const int row_height = cell_height * row;
+		std::vector<QString>& row_data = m_ui_data.m_cells_values[row];
+		for (size_t col = 0; col < col_num; ++col)
+		{
+			const int col_width = cell_width * col;
+
+			QRect rc(col_width, row_height, cell_width, cell_height);
+			painter.drawText(rc, Qt::AlignHCenter | Qt::AlignVCenter, (row_data[col]));
+		}
+	}
 }
 
 
